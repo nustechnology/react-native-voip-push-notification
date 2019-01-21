@@ -85,6 +85,10 @@ export default class RNVoipPushNotification {
             type === 'notification' || type === 'register' || type === 'localNotification',
             'RNVoipPushNotification only supports `notification`, `register` and `localNotification` events'
         );
+        //Removes all event listener
+        DeviceEventEmitter.removeListener(type);
+        DeviceEventEmitter.removeAllListeners();
+        
         var listener = _notifHandlers.get(handler);
         if (!listener) {
             return;
